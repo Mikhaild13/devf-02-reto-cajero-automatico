@@ -52,16 +52,17 @@ loginBtn.addEventListener('click', () => {
     warningLgn.style.visibility = 'visible';
   } else {
     let logincorrecto = passwords.filter( (pass) => usuario.value == pass.nombre && contra.value == pass.clave)
-      if (logincorrecto.length == 1) {
-        screen1.style.display = 'none';
-        screen2.style.display = 'flex';
-        montoForm.style.visibility = 'hidden';
-        localStorage.setItem('nombre', pass.nombre);
-      } else {
-        screen1.style.visibility = 'hidden';
-        alertLgnMsg.innerText = 'Datos incorrectos';
-        warningLgn.style.visibility = 'visible';
-      }
+    localStorage.setItem('nombre', logincorrecto[0].nombre);
+    if (logincorrecto.length == 1) {
+      screen1.style.display = 'none';
+      screen2.style.display = 'flex';
+      transac.style.visibility = 'hidden';
+      montoForm.style.visibility = 'hidden';
+    } else {
+      screen1.style.visibility = 'hidden';
+      alertLgnMsg.innerText = 'Datos incorrectos';
+      warningLgn.style.visibility = 'visible';
+    }
   }
   loginForm.reset();
   saldo.innerText = `Bienvenido ${localStorage.getItem('nombre')}`;
