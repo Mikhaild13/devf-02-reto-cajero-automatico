@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <link href="http://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+  <!-- <link href="http://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet"> -->
   <link rel="icon" type="image/png" sizes="32x32" href=""/>
   <style>
-    /* @import url('http://fonts.cdnfonts.com/css/harry-potter'); */
+    @import url('http://fonts.cdnfonts.com/css/harry-potter');
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
@@ -23,13 +23,23 @@
 </head>
 <body>
   <div class="container">
+    <!-- error de login -->
+    <div id="errorlgn" class="error">
+      <div id="errorlgnmessage">Mensaje de error</div>
+      <button id="errorlgnbtn" class="errorbtn" type="button">OK</button>
+    </div>
+    <!-- error de operación -->
+    <div id="error" class="error">
+      <div id="errormessage">Mensaje de error</div>
+      <button id="errorbtn" class="errorbtn" type="button">OK</button>
+    </div>
     <!-- login -->
     <div id="screen1" class="screen1"> 
       <div class="header">
         BIENVENIDO A GRINGOTTS
       </div>
       <div class="pick">
-        SELECCIONE USUARIO
+        INGRESE SUS DATOS
       </div>
       <form id="login-form" class="login-form">
         <input id="user" class="passinput" placeholder="usuario" type="text">
@@ -37,7 +47,7 @@
         <button id="login" class="userbtn" type="button">INGRESAR</button>
       </form>
     </div>
-    <!-- saldo -->
+    <!-- operaciones -->
     <div id="screen2" class="screen2">
       <div id="transaction" class="transaction">
         TRANSACCIÓN
@@ -56,6 +66,7 @@
         <input id="ammountret" class="ammount" placeholder="ingrese monto" type="number">
         <button id="okret" class="okbtn" type="button">OK</button>
       </div>
+      <div id="logout" class="logout" type="button">SALIR</div>
     </div>
   </div>
 
