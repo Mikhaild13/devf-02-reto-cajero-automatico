@@ -118,7 +118,7 @@ okret.addEventListener('click', () => {
 
     accounts.forEach( (account) => {
       if (localStorage.getItem('nombre') == account.nombre) {
-        if (account.saldo - retbox.valueAsNumber > 10) {
+        if (account.saldo - retbox.valueAsNumber > 9) {
           account.saldo -= retbox.valueAsNumber;
           transac.innerText = `Monto retirado: $${retbox.value}`
           retbox.value = '';
