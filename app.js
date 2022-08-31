@@ -15,41 +15,41 @@ let accounts = [
 const screen1 = document.getElementById('screen1');
 const usuario = document.getElementById('user');
 const contra = document.getElementById('pass');
-const loginbtn = document.getElementById('login');
+const loginBtn = document.getElementById('login');
 const loginForm = document.getElementById('login-form');
 
 const screen2 = document.getElementById('screen2');
 const saldo = document.getElementById('saldo');
-const saldobtn = document.getElementById('funds');
-const depositobtn = document.getElementById('deposit');
-const retirobtn = document.getElementById('withdraw');
+const saldoBtn = document.getElementById('funds');
+const depositoBtn = document.getElementById('deposit');
+const retiroBtn = document.getElementById('withdraw');
 
 const montoForm = document.getElementById('ammount-form');
-const depbox = document.getElementById('ammountdep');
-const okdep = document.getElementById('okdep');
-const retbox = document.getElementById('ammountret');
-const okret = document.getElementById('okret');
+const depBox = document.getElementById('ammountDep');
+const okDep = document.getElementById('okDep');
+const retBox = document.getElementById('ammountRet');
+const okRet = document.getElementById('okRet');
 const transac = document.getElementById('transaction');
 
 const warning = document.getElementById('error');
-const alertbtn = document.getElementById('errorbtn');
-const alertmsg = document.getElementById('errormessage');
+const alertBtn = document.getElementById('errorBtn');
+const alertMsg = document.getElementById('errorMessage');
 
-const warninglgn = document.getElementById('errorlgn');
-const alertlgnbtn = document.getElementById('errorlgnbtn');
-const alertlgnmsg = document.getElementById('errorlgnmessage');
+const warningLgn = document.getElementById('errorLgn');
+const alertLgnBtn = document.getElementById('errorLgnBtn');
+const alertLgnMsg = document.getElementById('errorLgnMessage');
 
-const salir = document.getElementById('logout');
+const salir = document.getElementById('logOut');
 
 
 //Login check
 
-loginbtn.addEventListener('click', () => {
+loginBtn.addEventListener('click', () => {
 
   if (usuario.value == '' || contra.value =='') {
     screen1.style.visibility = 'hidden';
-    alertlgnmsg.innerText = 'Datos incompletos';
-    warninglgn.style.visibility = 'visible';
+    alertLgnMsg.innerText = 'Datos incompletos';
+    warningLgn.style.visibility = 'visible';
   } else {
     passwords.filter( (pass) => {
     if (usuario.value == pass.nombre && contra.value == pass.clave) {
@@ -68,7 +68,7 @@ loginbtn.addEventListener('click', () => {
 
 //Mostrar saldo
 
-saldobtn.addEventListener('click', () => {
+saldoBtn.addEventListener('click', () => {
 
   accounts.map( (account) => {
     if (localStorage.getItem('nombre') == account.nombre) {
@@ -81,27 +81,27 @@ saldobtn.addEventListener('click', () => {
 
 //Depositar saldo
 
-depositobtn.addEventListener('click', () => {
+depositoBtn.addEventListener('click', () => {
 
   montoForm.style.visibility = 'visible';
-  depbox.style.display = 'inline';
-  okdep.style.display = 'inline';
-  retbox.style.display = 'none';
-  okret.style.display = 'none';
+  depBox.style.display = 'inline';
+  okDep.style.display = 'inline';
+  retBox.style.display = 'none';
+  okRet.style.display = 'none';
   transac.style.visibility = 'hidden';
 
 })
 
-okdep.addEventListener('click', () => {
+okDep.addEventListener('click', () => {
 
-  if (depbox.value > 0) {
+  if (depBox.value > 0) {
 
     accounts.forEach( (account) => {
       if (localStorage.getItem('nombre') == account.nombre) {
-        if (account.saldo + depbox.valueAsNumber < 999) {
-          account.saldo += depbox.valueAsNumber;
-          transac.innerText = `Monto depositado: $${depbox.value}`
-          depbox.value = '';
+        if (account.saldo + depBox.valueAsNumber < 999) {
+          account.saldo += depBox.valueAsNumber;
+          transac.innerText = `Monto depositado: $${depBox.value}`
+          depBox.value = '';
           montoForm.style.visibility = 'hidden';
           transac.style.visibility = 'visible';
           saldo.innerText = `Saldo $${account.saldo}`;
@@ -109,7 +109,7 @@ okdep.addEventListener('click', () => {
           transac.style.visibility = 'hidden';
           screen2.style.visibility = 'hidden';
           montoForm.style.visibility = 'hidden';
-          alertmsg.innerText = 'Su saldo no puede ser mayor a $999';
+          alertMsg.innerText = 'Su saldo no puede ser mayor a $999';
           warning.style.visibility = 'visible';
         }
       }
@@ -117,7 +117,7 @@ okdep.addEventListener('click', () => {
   } else {
     screen2.style.visibility = 'hidden';
     montoForm.style.visibility = 'hidden';
-    alertmsg.innerText = 'Ingrese un monto positivo';
+    alertMsg.innerText = 'Ingrese un monto positivo';
     warning.style.visibility = 'visible';
   }
 
@@ -125,27 +125,27 @@ okdep.addEventListener('click', () => {
 
 //Retirar saldo
 
-retirobtn.addEventListener('click', () => {
+retiroBtn.addEventListener('click', () => {
 
   montoForm.style.visibility = 'visible';
-  retbox.style.display = 'inline';
-  okret.style.display = 'inline';
-  depbox.style.display = 'none';
-  okdep.style.display = 'none';
+  retBox.style.display = 'inline';
+  okRet.style.display = 'inline';
+  depBox.style.display = 'none';
+  okDep.style.display = 'none';
   transac.style.visibility = 'hidden';
 
 })
 
-okret.addEventListener('click', () => {
+okRet.addEventListener('click', () => {
 
-  if (retbox.value > 0) {
+  if (retBox.value > 0) {
 
     accounts.forEach( (account) => {
       if (localStorage.getItem('nombre') == account.nombre) {
-        if (account.saldo - retbox.valueAsNumber > 9) {
-          account.saldo -= retbox.valueAsNumber;
-          transac.innerText = `Monto retirado: $${retbox.value}`
-          retbox.value = '';
+        if (account.saldo - retBox.valueAsNumber > 9) {
+          account.saldo -= retBox.valueAsNumber;
+          transac.innerText = `Monto retirado: $${retBox.value}`
+          retBox.value = '';
           montoForm.style.visibility = 'hidden';
           transac.style.visibility = 'visible';
           saldo.innerText = `Saldo $${account.saldo}`;
@@ -153,7 +153,7 @@ okret.addEventListener('click', () => {
           transac.style.visibility = 'hidden';
           screen2.style.visibility = 'hidden';
           montoForm.style.visibility = 'hidden';
-          alertmsg.innerText = 'Su saldo no puede ser menor a $10';
+          alertMsg.innerText = 'Su saldo no puede ser menor a $10';
           warning.style.visibility = 'visible';
         }
       }
@@ -161,7 +161,7 @@ okret.addEventListener('click', () => {
   } else {
     screen2.style.visibility = 'hidden';
     montoForm.style.visibility = 'hidden';
-    alertmsg.innerText = 'Ingrese un monto positivo';
+    alertMsg.innerText = 'Ingrese un monto positivo';
     warning.style.visibility = 'visible';
   }
 
@@ -169,17 +169,17 @@ okret.addEventListener('click', () => {
 
 //ventana de error screen1
 
-alertlgnbtn.addEventListener('click', () => { 
-  warninglgn.style.visibility = 'hidden';
+alertLgnBtn.addEventListener('click', () => { 
+  warningLgn.style.visibility = 'hidden';
   usuario.innerText = '';
   contra.innerText = '';
   screen1.style.visibility = 'visible';
 })
 //ventana de error screen2
 
-alertbtn.addEventListener('click', () => { 
-  depbox.value = '';
-  retbox.value = '';
+alertBtn.addEventListener('click', () => { 
+  depBox.value = '';
+  retBox.value = '';
   warning.style.visibility = 'hidden';
   screen2.style.visibility = 'visible';
   montoForm.style.visibility = 'visible';
@@ -188,8 +188,8 @@ alertbtn.addEventListener('click', () => {
 //Salir
 
 salir.addEventListener('click', () => {
-  depbox.value = '';
-  retbox.value = '';
+  depBox.value = '';
+  retBox.value = '';
   screen1.style.display = 'inline'
   screen2.style.display = 'none'
 })
