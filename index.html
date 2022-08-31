@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href=""/>
+  <style>
+    @import url('http://fonts.cdnfonts.com/css/harry-potter');
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+  </style>
+
+  <title>Cajero Automático</title>
+</head>
+<body>
+  <div class="container">
+    <!-- login -->
+    <div id="screen1" class="screen1"> 
+      <div class="header">
+        BIENVENIDO A GRINGOTTS
+      </div>
+      <div class="pick">
+        SELECCIONE USUARIO
+      </div>
+      <form id="login-form" class="login-form">
+        <input id="user" class="passinput" placeholder="usuario" type="text">
+        <input id="pass" class="passinput" placeholder="contraseña" type="password">
+        <button id="login" class="userbtn" type="button">INGRESAR</button>
+      </form>
+    </div>
+    <!-- saldo -->
+    <div id="screen2" class="screen2">
+      <div id="transaction" class="transaction">
+        TRANSACCIÓN
+      </div>
+      <div id="saldo" class="greeting">
+        BIENVENIDO USUARIO
+      </div>
+      <div class="login-form">
+        <button id="funds" class="operbtn" type="button">Consultar saldo</button>
+        <button id="deposit" class="operbtn" type="button">Ingresar monto</button>
+        <button id="withdraw" class="operbtn" type="button">Retirar monto</button>
+      </div>
+      <div id="ammount-form" class="ammount-form">
+        <input id="ammountdep" class="ammount" placeholder="ingrese monto" type="number">
+        <button id="okdep" class="okbtn" type="button">OK</button>
+        <input id="ammountret" class="ammount" placeholder="ingrese monto" type="number">
+        <button id="okret" class="okbtn" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100vw;
+  max-height: 100vh;
+  font-family: 'Harry Potter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(./thunder/background.jpg);
+  background-size: cover;
+}
+
+.container{
+  height: 100vh;
+  background-image: url(./thunder/rain.png);
+  animation: rain 0.3s linear infinite;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes rain{
+  0%{
+      background-position: 0% 0%;
+  }
+  100%{
+      background-position: 20% 100%;
+  }
+}
+
+.container::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(./thunder/lightining.png);
+  top: -50px;
+  transform: rotate(180deg);
+  animation: lightining 4s linear infinite;
+  opacity: 1;
+}
+
+@keyframes lightining{
+  0%{
+      opacity: 0;
+  }
+  20%{
+      opacity: 0;
+  }
+  21%{
+      opacity: 1;
+  }
+  25%{
+      opacity: 0;
+  }
+  30%{
+      opacity: 0;
+  }
+  31%{
+      opacity: 1;
+  }
+  35%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+
+.screen1 {
+  display: none;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+.screen2 {
+  /* display: none; */
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+.screen3 {
+  display: none;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+.header {
+  color: goldenrod;
+  font-size: 45px;
+  font-weight: bolder;
+  text-shadow: -1px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+  padding-bottom: 2rem;
+}
+
+.pick {
+  color: black;
+  font-size: 30px;
+  font-weight: bolder;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  padding-bottom: 2rem;
+}
+
+.operation {
+  visibility: hidden;
+  color: black;
+  font-size: 20px;
+  font-weight: bolder;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.greeting {
+  color: goldenrod;
+  font-size: 40px;
+  font-weight: bolder;
+  text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userbtn {
+  background: goldenrod;
+  width: 12rem;
+  height: 3rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  padding-top: 0.7rem;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.userbtn:hover {
+  cursor: pointer;
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+ 
+.userbtn:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.passinput {
+  position: relative;
+  top: 4px;
+  text-align: center;
+  background: black;
+  color: whitesmoke;
+  width: 12rem;
+  height: 3rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  padding-top: 0.9rem;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid goldenrod;
+  border-radius: 0.4em;
+}
+
+.operbtn {
+  color: black;
+  background: goldenrod;
+  width: 12rem;
+  height: 3rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  padding-top: 0.7rem;
+  font-size: 20px;
+  border: 3px solid blackMali;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.operbtn:hover {
+  cursor: pointer;
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+  
+.operbtn:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.ammount-form {
+  visibility: hidden;
+}
+
+.ammount {
+  text-align: center;
+  background: black;
+  color: whitesmoke;
+  width: 9rem;
+  height: 3rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  padding-top: 0.9rem;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid goldenrod;
+  border-radius: 0.4em;
+}
+
+.okbtn {
+  position: relative;
+  bottom: 7px;
+  background: goldenrod;
+  width: 3rem;
+  height: 3rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.okbtn:hover {
+  cursor: pointer;
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+ 
+.okbtn:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.transaction {
+  visibility: hidden;
+  color: black;
+  font-size: 20px;
+  font-weight: bolder;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
