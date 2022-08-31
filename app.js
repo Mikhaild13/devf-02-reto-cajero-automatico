@@ -52,7 +52,6 @@ loginBtn.addEventListener('click', () => {
     warningLgn.style.visibility = 'visible';
   } else {
     let logincorrecto = passwords.filter( (pass) => usuario.value == pass.nombre && contra.value == pass.clave)
-    console.log(logincorrecto)
       if (logincorrecto.length == 1) {
         screen1.style.display = 'none';
         screen2.style.display = 'flex';
