@@ -316,3 +316,9 @@ body {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.05em 0.05em;
 }
+
+@media (max-width: 31.25rem) {
+  .screen2 {
+    min-width: 20rem;
+  }
+}
