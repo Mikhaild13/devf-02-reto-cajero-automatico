@@ -1,6 +1,6 @@
 //Variables y arrays
 
-let passwords = [
+const passwords = [
   { nombre: 'Mali', clave: 'mali' },
   { nombre: 'Gera', clave: 'gera' },
   { nombre: 'Maui', clave: 'maui' },
@@ -51,17 +51,19 @@ loginBtn.addEventListener('click', () => {
     alertLgnMsg.innerText = 'Datos incompletos';
     warningLgn.style.visibility = 'visible';
   } else {
-    passwords.filter( (pass) => {
-    if (usuario.value == pass.nombre && contra.value == pass.clave) {
-      screen1.style.display = 'none';
-      screen2.style.display = 'flex';
-      montoForm.style.visibility = 'hidden';
-      localStorage.setItem('nombre', pass.nombre);
-    } 
-    // alert('Usuario y/o contraseña incorrecto');
-  })
+    let logincorrecto = passwords.filter( (pass) => usuario.value == pass.nombre && contra.value == pass.clave)
+    console.log(logincorrecto)
+      if (logincorrecto.length == 1) {
+        screen1.style.display = 'none';
+        screen2.style.display = 'flex';
+        montoForm.style.visibility = 'hidden';
+        localStorage.setItem('nombre', pass.nombre);
+      } else {
+        screen1.style.visibility = 'hidden';
+        alertLgnMsg.innerText = 'Datos incorrectos';
+        warningLgn.style.visibility = 'visible';
+      }
   }
-    
   loginForm.reset();
   saldo.innerText = `Bienvenido ${localStorage.getItem('nombre')}`;
 })
