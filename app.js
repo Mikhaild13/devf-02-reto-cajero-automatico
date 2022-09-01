@@ -47,25 +47,35 @@ const salir = document.getElementById('logOut');
 loginBtn.addEventListener('click', () => {
 
   if (usuario.value == '' || contra.value =='') {
+
     screen1.style.visibility = 'hidden';
     alertLgnMsg.innerText = 'Datos incompletos';
     warningLgn.style.visibility = 'visible';
+
   } else {
+
     let logincorrecto = passwords.filter( (pass) => usuario.value == pass.nombre && contra.value == pass.clave)
-    localStorage.setItem('nombre', logincorrecto[0].nombre);
+    
     if (logincorrecto.length == 1) {
+      
       screen1.style.display = 'none';
       screen2.style.display = 'flex';
       transac.style.visibility = 'hidden';
       montoForm.style.visibility = 'hidden';
+      
     } else {
+      
       screen1.style.visibility = 'hidden';
       alertLgnMsg.innerText = 'Datos incorrectos';
       warningLgn.style.visibility = 'visible';
+      
     }
+    localStorage.setItem('nombre', logincorrecto[0].nombre);
   }
+
   loginForm.reset();
   saldo.innerText = `Bienvenido ${localStorage.getItem('nombre')}`;
+
 })
 
 //Mostrar saldo
@@ -73,10 +83,13 @@ loginBtn.addEventListener('click', () => {
 saldoBtn.addEventListener('click', () => {
 
   accounts.map( (account) => {
+
     if (localStorage.getItem('nombre') == account.nombre) {
+
       montoForm.style.visibility = 'hidden';
       transac.style.visibility = 'hidden';
       saldo.innerText = `Saldo $${account.saldo}`;
+
     }
   })
 })
@@ -99,28 +112,36 @@ okDep.addEventListener('click', () => {
   if (depBox.value > 0) {
 
     accounts.forEach( (account) => {
+
       if (localStorage.getItem('nombre') == account.nombre) {
-        if (account.saldo + depBox.valueAsNumber < 999) {
+
+        if (account.saldo + depBox.valueAsNumber < 990.1) {
+
           account.saldo += depBox.valueAsNumber;
           transac.innerText = `Monto depositado: $${depBox.value}`
           depBox.value = '';
           montoForm.style.visibility = 'hidden';
           transac.style.visibility = 'visible';
           saldo.innerText = `Saldo $${account.saldo}`;
+
         } else {
+
           transac.style.visibility = 'hidden';
           screen2.style.visibility = 'hidden';
           montoForm.style.visibility = 'hidden';
-          alertMsg.innerText = 'Su saldo no puede ser mayor a $999';
+          alertMsg.innerText = 'Su saldo no puede ser mayor a $990';
           warning.style.visibility = 'visible';
+
         }
       }
     })
   } else {
+
     screen2.style.visibility = 'hidden';
     montoForm.style.visibility = 'hidden';
     alertMsg.innerText = 'Ingrese un monto positivo';
     warning.style.visibility = 'visible';
+
   }
 
 })
@@ -143,28 +164,36 @@ okRet.addEventListener('click', () => {
   if (retBox.value > 0) {
 
     accounts.forEach( (account) => {
+
       if (localStorage.getItem('nombre') == account.nombre) {
-        if (account.saldo - retBox.valueAsNumber > 9) {
+
+        if (account.saldo - retBox.valueAsNumber > 9.9) {
+
           account.saldo -= retBox.valueAsNumber;
           transac.innerText = `Monto retirado: $${retBox.value}`
           retBox.value = '';
           montoForm.style.visibility = 'hidden';
           transac.style.visibility = 'visible';
           saldo.innerText = `Saldo $${account.saldo}`;
+
         } else {
+
           transac.style.visibility = 'hidden';
           screen2.style.visibility = 'hidden';
           montoForm.style.visibility = 'hidden';
           alertMsg.innerText = 'Su saldo no puede ser menor a $10';
           warning.style.visibility = 'visible';
+
         }
       }
     })
   } else {
+
     screen2.style.visibility = 'hidden';
     montoForm.style.visibility = 'hidden';
     alertMsg.innerText = 'Ingrese un monto positivo';
     warning.style.visibility = 'visible';
+
   }
 
 })
@@ -172,26 +201,33 @@ okRet.addEventListener('click', () => {
 //ventana de error screen1
 
 alertLgnBtn.addEventListener('click', () => { 
+
   warningLgn.style.visibility = 'hidden';
   usuario.innerText = '';
   contra.innerText = '';
   screen1.style.visibility = 'visible';
+
 })
+
 //ventana de error screen2
 
-alertBtn.addEventListener('click', () => { 
+alertBtn.addEventListener('click', () => {
+
   depBox.value = '';
   retBox.value = '';
   warning.style.visibility = 'hidden';
   screen2.style.visibility = 'visible';
   montoForm.style.visibility = 'visible';
+
 })
 
 //Salir
 
 salir.addEventListener('click', () => {
+
   depBox.value = '';
   retBox.value = '';
   screen1.style.display = 'inline'
   screen2.style.display = 'none'
+
 })
