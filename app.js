@@ -203,8 +203,8 @@ okRet.addEventListener('click', () => {
 alertLgnBtn.addEventListener('click', () => { 
 
   warningLgn.style.visibility = 'hidden';
-  usuario.innerText = '';
-  contra.innerText = '';
+  usuario.value = '';
+  contra.value = '';
   screen1.style.visibility = 'visible';
 
 })
